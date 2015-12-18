@@ -16,6 +16,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import static org.ifollowyou.hmk.ArticleFactory.createArticle;
 
 public class App {
     public static void main(String[] args) {
@@ -23,19 +24,16 @@ public class App {
         ObjectMapper mapper = new ObjectMapper();
 
         try {
-
             //POJO to JSON
             mapper.writeValue(new File("article.json"), createArticle());
             System.out.println("json created!");
 
             //JSON to POJO
             Article article = mapper.readValue(new File("article.json"), Article.class);
+            System.out.println(article);
 
             //"Raw" Data Binding Example
             Map<String, Object> articleMap = mapper.readValue(new File("article.json"), Map.class);
-
-            System.out.println(article);
-
             System.out.println(articleMap);
 
             //Data binding Collection<E>
@@ -93,17 +91,5 @@ public class App {
         }
     }
 
-    private static Article createArticle() {
 
-        Article article = new Article();
-
-        article.setTitle("Jackson - Java to JSON & JSON to Java");
-        article.setUrl("http://hmkcode.com/jackson-java-json");
-        article.addCategory("Java");
-        article.addTag("Java");
-        article.addTag("Jackson");
-        article.addTag("JSON");
-
-        return article;
-    }
 }
