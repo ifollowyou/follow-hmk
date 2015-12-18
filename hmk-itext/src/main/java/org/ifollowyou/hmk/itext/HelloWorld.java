@@ -26,9 +26,7 @@ public class HelloWorld {
 
             System.out.println("Document created!");
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (DocumentException e) {
+        } catch (FileNotFoundException | DocumentException e) {
             e.printStackTrace();
         }
     }
