@@ -1,3 +1,12 @@
-{"title":"Jackson - Java to JSON & JSON to Java",
-"categories":["Java"],
-"address":"http://hmkcode.com/jackson-java-json"}
+{
+	"categories":[
+		"Java"
+	],
+	"tags":[
+		"Java",
+		"Jackson",
+		"JSON"
+	],
+	"title":"Jackson - Java to JSON & JSON to Java",
+	"url":"http://hmkcode.com/jackson-java-json"
+}
