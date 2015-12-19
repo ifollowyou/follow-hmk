@@ -1,9 +1,9 @@
-package org.ifollowyou.hmk;
+package org.ifollowyou.hmk.castor;
 
 import org.exolab.castor.mapping.Mapping;
 import org.exolab.castor.mapping.MappingException;
 import org.exolab.castor.xml.*;
-import org.ifollowyou.hmk.vo.Article;
+import org.ifollowyou.hmk.castor.vo.Article;
 
 import java.io.*;
 
