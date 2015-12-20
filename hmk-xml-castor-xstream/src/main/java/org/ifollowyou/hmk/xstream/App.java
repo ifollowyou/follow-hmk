@@ -1,8 +1,8 @@
-package org.ifollowyou.hmk;
+package org.ifollowyou.hmk.xstream;
 
 
 import com.thoughtworks.xstream.XStream;
-import org.ifollowyou.hmk.vo.Article;
+import org.ifollowyou.hmk.xstream.vo.Article;
 
 
 public class App {

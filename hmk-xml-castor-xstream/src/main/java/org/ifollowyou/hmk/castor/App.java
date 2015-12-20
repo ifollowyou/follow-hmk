@@ -1,8 +1,8 @@
-package org.ifollowyou.hmk;
+package org.ifollowyou.hmk.castor;
 
 import org.exolab.castor.xml.Marshaller;
 import org.exolab.castor.xml.Unmarshaller;
-import org.ifollowyou.hmk.vo.Article;
+import org.ifollowyou.hmk.castor.vo.Article;
 
 import java.io.FileReader;
 import java.io.FileWriter;

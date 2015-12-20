@@ -5,7 +5,7 @@
             http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.ifollowyou.hmk</groupId>
-    <artifactId>hmk-castor-xml</artifactId>
+    <artifactId>hmk-xml-castor-xstream</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
@@ -21,16 +21,24 @@
             <version>1.16.6</version>
             <scope>compile</scope>
         </dependency>
+
+        <!-- castor 需要依赖commons-logging和xerces-->
         <dependency>
             <groupId>org.codehaus.castor</groupId>
             <artifactId>castor</artifactId>
             <version>1.2</version>
         </dependency>
-
         <dependency>
             <groupId>xerces</groupId>
             <artifactId>xercesImpl</artifactId>
             <version>2.11.0</version>
+        </dependency>
+
+        <!-- xstream -->
+        <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>1.4.8</version>
         </dependency>
 
         <dependency>

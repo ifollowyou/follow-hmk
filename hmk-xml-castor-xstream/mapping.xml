@@ -2,7 +2,7 @@
 <!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Mapping DTD Version 1.0//EN"
         "http://castor.org/mapping.dtd">
 <mapping>
-    <class name="org.ifollowyou.hmk.vo.Article">
+    <class name="org.ifollowyou.hmk.castor.vo.Article">
         <map-to xml="article"/>
 
         <field name="title" type="string">

@@ -1,4 +1,4 @@
-package org.ifollowyou.hmk.vo;
+package org.ifollowyou.hmk.castor.vo;
 
 import lombok.Getter;
 import lombok.Setter;
