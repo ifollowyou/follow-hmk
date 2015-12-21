@@ -14,7 +14,6 @@ import java.io.IOException;
 @WebServlet(name = "asyncServlet", value = {"/async"}, asyncSupported = true)
 public class AsyncServlet extends HttpServlet {
 
-
     private static final long serialVersionUID = 1L;
 
     String param = "";
@@ -22,7 +21,6 @@ public class AsyncServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-
 
         // 1.0 start async
         final AsyncContext ctx = req.startAsync();
@@ -33,23 +31,18 @@ public class AsyncServlet extends HttpServlet {
 
         // 3.0 add listener
         ctx.addListener(new AsyncListener() {
-
-            @Override
             public void onTimeout(AsyncEvent arg0) throws IOException {
                 System.out.println("onTimeout...");
             }
 
-            @Override
             public void onStartAsync(AsyncEvent arg0) throws IOException {
                 System.out.println("onStartAsync...");
             }
 
-            @Override
             public void onError(AsyncEvent arg0) throws IOException {
                 System.out.println("onError...");
             }
 
-            @Override
             public void onComplete(AsyncEvent arg0) throws IOException {
                 System.out.println("onComplete...");
             }
@@ -60,12 +53,21 @@ public class AsyncServlet extends HttpServlet {
             @Override
             public void run() {
                 try {
-
                     // hold until receive exit
                     while (!param.equals("exit")) {
+                        try {
+                            Thread.sleep(2000);
+                            String msg = "param="+System.currentTimeMillis();
+                            System.out.println(msg);
+//                            ctx.getResponse().getWriter().write(msg);
+//                            ctx.getResponse().getWriter().flush();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
-
-                    ctx.getResponse().getWriter().write(ctx.getRequest().getParameter("seq"));
+                    String seq = ctx.getRequest().getParameter("seq");
+                    System.out.println("seq=" + seq);
+                    ctx.getResponse().getWriter().write(seq);
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -73,8 +75,6 @@ public class AsyncServlet extends HttpServlet {
 
                 ctx.complete();
             }
-
-
         });
     }
 }

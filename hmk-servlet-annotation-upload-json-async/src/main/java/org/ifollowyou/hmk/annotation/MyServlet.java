@@ -1,4 +1,3 @@
-
 package org.ifollowyou.hmk.annotation;
 
 import javax.servlet.annotation.WebServlet;
