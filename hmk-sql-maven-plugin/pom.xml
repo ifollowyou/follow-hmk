@@ -11,6 +11,18 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <mysql.version>5.1.37</mysql.version>
+        <db.driver>com.mysql.jdbc.Driver</db.driver>
+        <db.url>
+            jdbc:mysql://localhost:3306/jeefw?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8
+        </db.url>
+        <db.schema>jeefw</db.schema>
+        <db.user>jeefw</db.user>
+        <db.password>jeefw</db.password>
+        <db.creation.skip>false</db.creation.skip>
     </properties>
 
     <dependencies>
@@ -29,6 +41,7 @@
                 <artifactId>sql-maven-plugin</artifactId>
                 <version>1.5</version>
 
+                <!-- 数据库驱动依赖 -->
                 <dependencies>
                     <dependency>
                         <groupId>mysql</groupId>
@@ -37,14 +50,23 @@
                     </dependency>
                 </dependencies>
 
+                <!-- 数据库连接相关配置 -->
                 <configuration>
                     <driver>com.mysql.jdbc.Driver</driver>
-                    <url>jdbc:mysql://localhost:3306/hmkcode</url>
+                    <url>
+                        jdbc:mysql://localhost:3306/hmkcode?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8
+                    </url>
                     <username>root</username>
                     <password></password>
+                    <skip>${db.creation.skip}</skip>
+                    <autocommit>true</autocommit>
+                    <encoding>UTF-8</encoding>
+                    <orderFile>ascending</orderFile>
+                    <onError>abort</onError>
                 </configuration>
 
                 <executions>
+                    <!-- 执行sql语句示例 -->
                     <execution>
                         <id>drop-table</id>
                         <phase>process-test-resources</phase>
@@ -57,6 +79,7 @@
                         </configuration>
                     </execution>
 
+                    <!-- 执行sql文件示例 -->
                     <execution>
                         <id>create-table</id>
                         <phase>process-test-resources</phase>
@@ -71,6 +94,7 @@
                         </configuration>
                     </execution>
 
+                    <!-- 根据目录执行多个sql文件示例 -->
                     <execution>
                         <id>insert-data</id>
                         <phase>process-test-resources</phase>
@@ -87,7 +111,6 @@
                             </fileset>
                         </configuration>
                     </execution>
-
                 </executions>
             </plugin>
 
