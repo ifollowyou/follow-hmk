@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="example" default="info">
+ 
+    <property file="build.properties"/>
+    <import file="common.xml" />
+
+    <target name="deploy" depends="init" />
+
+    <target name="init">
+        <property name="example_name" value="extendedEmExample" />
+        <property name="DB_NAME" value="extendedEmExample" />
+    </target>
+
+    <target name="info" depends="deploy">
+        <echo>${ADMIN_USER}</echo>
+        <echo>${compile_classpath}</echo>
+        <echo>${runtime_classpath}</echo>
+        <echo>${plugin_classpath}</echo>
+    </target>
+</project>
