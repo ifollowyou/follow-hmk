@@ -29,6 +29,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.4.0</version>
                 <executions>
+                    <!-- 插件的执行标识与执行时机 -->
                     <execution>
                         <id>main</id>
                         <phase>compile</phase>
@@ -38,6 +39,7 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <!-- 待执行的类 -->
                     <mainClass>org.ifollowyou.hmk.App</mainClass>
                 </configuration>
             </plugin>
