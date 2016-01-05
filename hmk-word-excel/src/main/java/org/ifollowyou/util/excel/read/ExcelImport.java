@@ -1,6 +1,7 @@
 package org.ifollowyou.util.excel.read;
 
-import org.apache.poi.hssf.usermodel.*;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -49,6 +50,20 @@ public class ExcelImport {
     private SimpleDateFormat format;
 
 
+    public ExcelImport(Map<String, String> associations) {
+        this.associations = associations;
+        format = new SimpleDateFormat(date_format);
+
+
+    }
+
+
+    public ExcelImport(Map<String, String> associations, String date_format) {
+        this.associations = associations;
+        this.date_format = date_format;
+        format = new SimpleDateFormat(date_format);
+    }
+
     /**
      * 初始化工作簿
      *
@@ -69,22 +84,6 @@ public class ExcelImport {
 
 
     }
-
-
-    public ExcelImport(Map<String, String> associations) {
-        this.associations = associations;
-        format = new SimpleDateFormat(date_format);
-
-
-    }
-
-
-    public ExcelImport(Map<String, String> associations, String date_format) {
-        this.associations = associations;
-        this.date_format = date_format;
-        format = new SimpleDateFormat(date_format);
-    }
-
 
     /**
      * @return true 存在错误，false 不存在错误
@@ -166,7 +165,7 @@ public class ExcelImport {
                     }
                 } else {
                     String key = header.get(columns);
-                    if(key == null) continue;
+                    if (key == null) continue;
 // 加载实际值
                     this.loadValue(clazz, instance, this.associations.get(key),
                             value);
@@ -270,8 +269,7 @@ public class ExcelImport {
 
         try {
             result = "get" + field.substring(0, 1).toUpperCase() + field.substring(1);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

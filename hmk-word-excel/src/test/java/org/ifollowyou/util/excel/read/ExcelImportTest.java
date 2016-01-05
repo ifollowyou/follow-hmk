@@ -21,14 +21,13 @@ public class ExcelImportTest {
         try {
             File pwd = new File(".");
             File xls = new File(pwd, "src/main/resources/xls2java.xlsx");
-            if(xls.exists()) {
+            if (xls.exists()) {
                 excelImport.init(xls);
                 List<Person> list = excelImport.bindToModels(Person.class, true);
 
                 System.out.println(list.size());
                 System.out.println(list);
-            }
-            else {
+            } else {
                 System.out.println("=====Not found file!");
             }
         } catch (Exception e) {
