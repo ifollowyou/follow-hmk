@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="org.ifollowyou.spel.method"/>
+
+    <bean id="listOfTopics" class="org.ifollowyou.spel.method.ListOfTopics">
+        <property name="topicsList">
+            <list>
+                <ref bean="java"/>
+                <ref bean="scala"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="java" class="org.ifollowyou.spel.method.Topic">
+        <property name="name" value="JavaThreads"/>
+    </bean>
+
+    <bean id="scala" class="org.ifollowyou.spel.method.Topic">
+        <property name="name" value="ScalaFunctions"/>
+    </bean>
+
+    <bean id="myTraining" class="org.ifollowyou.spel.method.Training">
+        <property name="javaTopic" value="#{java.name}"/>
+        <property name="totalTopics" value="#{listOfTopics.getTopicsList().size()}"/>
+        <property name="hasThreadTutorial"
+                  value="#{java.name.toUpperCase() == 'JavaThreads'.toUpperCase()}"/>
+        <property name="firstTopic" value="#{listOfTopics.getTopicsList()[0]}"/>
+        <property name="customTopics"
+                  value="#{T(java.util.Arrays).asList(new org.ifollowyou.spel.method.Topic('Spring Data'), listOfTopics.getTopicsList()[0])}"/>
+    </bean>
+</beans>

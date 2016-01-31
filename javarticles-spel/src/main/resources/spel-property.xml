@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="org.ifollowyou.spel.property"/>
+
+    <bean id="currentTopics" class="org.ifollowyou.spel.property.Tutorial">
+        <property name="name" value="Current Hot Topics"/>
+        <property name="tutorialPrice" value="300"/>
+        <property name="defaultTopics">
+            <list>
+                <value>Java Core</value>
+                <value>Java Concurrency</value>
+            </list>
+        </property>
+        <property name="hotTopics">
+            <map>
+                <entry key="java" value="Lambda Expressions"/>
+                <entry key="functionalLang" value="Scala"/>
+                <entry key="performance" value="Database Performance"/>
+            </map>
+        </property>
+        <property name="programmingTutorial">
+            <bean class="org.ifollowyou.spel.property.Tutorial">
+                <property name="name" value="Scala"/>
+            </bean>
+        </property>
+    </bean>
+</beans>
